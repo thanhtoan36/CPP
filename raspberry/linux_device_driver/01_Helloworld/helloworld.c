@@ -1,15 +1,25 @@
 #include <linux/module.h>
-static int __init hello_init(void)
-{
-pr_info("Hello world init\n");
-return 0;
-}
-static void __exit hello_exit(void)
-{
-pr_info("Hello world exit\n");
-}
-module_init(hello_init);
-module_exit(hello_exit);
+#include <linux/init.h>
+
+/* Meta Information */
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Alberto Liberal <aliberal@arroweurope.com>");
-MODULE_DESCRIPTION("This is a print out Hello World module");
+MODULE_AUTHOR("Johannes 4 GNU/Linux");
+MODULE_DESCRIPTION("A hello world LKM");
+
+/**
+ * @brief This function is called, when the module is loaded into the kernel
+ */
+static int __init my_init(void) {
+	printk("Hello, Kernel!\n");
+	return 0;
+}
+
+/**
+ * @brief This function is called, when the module is removed from the kernel
+ */
+static void __exit my_exit(void) {
+	printk("Goodbye, Kernel\n");
+}
+
+module_init(my_init);
+module_exit(my_exit);
