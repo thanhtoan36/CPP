@@ -3,7 +3,7 @@
 
 /* Meta Information */
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Johannes 4 GNU/Linux");
+MODULE_AUTHOR("ToanPT 4 GNU/Linux");
 MODULE_DESCRIPTION("A hello world LKM");
 
 /**
