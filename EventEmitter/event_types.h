@@ -62,16 +62,3 @@ enum class Events
     ExitFirmwareUpdate,
     RefChange, // Used by ReferenceIO
 };
-
-// Declaring a hash function for Event so we cna use it in maps as a key.
-namespace std
-{
-    template <>
-    struct hash<Events>
-    {
-        std::size_t operator()(const Events &k) const
-        {
-            return std::hash<int>()(static_cast<std::underlying_type_t<Events>>(k));
-        }
-    };
-} // namespace std
