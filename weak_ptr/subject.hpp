@@ -12,14 +12,14 @@ public:
 
     Subject() {}
 
-    void notify(const Args &...args)
+    void notify(Args &&...args)
     {
         bool cleanup = false;
         for (const auto &observer_weak : m_observers)
         {
             if (const auto &observer_function = observer_weak.lock())
             {
-                (*observer_function)(args...);
+                (*observer_function)(std::forward<Args>(args)...);
             }
             else
             {
